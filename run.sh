@@ -6,7 +6,8 @@
 # check we are on centos7
 # check we are being run as root
 
-yum -y upgrade
+echo 'Yum updating the host' 
+yum -y -d0 upgrade
 
 cat > /etc/yum.repos.d/vagrant.repo <<- EOM
 
@@ -31,8 +32,8 @@ gpgcheck=0
 
 EOM
 
+echo 'Installing Vagrant + Libvirt'
 yum -y -d 0 install vagrant1 rsync
-
 if [ $? -eq 0 ]; then
   service libvirtd start
   rm -rf ~/sync ; mkdir -p ~/sync
