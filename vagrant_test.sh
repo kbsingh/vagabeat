@@ -9,11 +9,9 @@ echo 'Updates backlog :' ${UpdtPkgs}
 #    echo 'More than 10 packages due an update!'
 #    exit 1
 #else
-    vagrant ssh -c 'cd sync; sudo env "PATH=$PATH" ./runtests.sh'
-    # the $? check here isnt going to work since it will be the ssh exit, not the
-    # script exit 
+    vagrant ssh -c 'cd sync; sudo env "PATH=$PATH" bash test_example_helloapache.sh'
     if [ $? -ne 0 ]; then
-      echo 't_functional failed'
+      echo 'failed'
       exit 2
     else
       exit 0
