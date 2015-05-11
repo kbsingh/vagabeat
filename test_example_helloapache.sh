@@ -10,14 +10,14 @@ if [ $? -ne 0 ]; then echo "atomic run failed" ; exit 1 ; fi
 podup=$(kubectl get pod | grep -E 'apache.*Running' ; echo $?)
 timer=0
 echo 'Waiting for upto 4 minutes for the app to launch...'
-while [ $timer -lt 120 ] && [ $podup -gt 0 ]; do
+while [ $timer -lt 120 ] && [ $podup -ne 0 ]; do
   echo -n '+'
   sleep 2
   podup=$(kubectl get pod | grep -E 'apache.*Running' ; echo $?)
   timer=$((timer+1))
 done
 echo ' '
-if [ $podup -gt 0 ]; then
+if [ $timer -gt 119 ]; then
   echo 'Gave up waiting for app to start'
   exit 1
 fi
