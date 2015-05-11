@@ -36,7 +36,7 @@ yum -y install vagrant1 rsync
 if [ $? -eq 0 ]; then
   service libvirtd start
   rm -rf ~/sync ; mkdir -p ~/sync
-  cp answers.conf t_example_helloapache.sh ~/sync/
+  cp answers.conf test_example_helloapache.sh ~/sync/
   chmod u+x ./vagrant_test.sh
   scl enable vagrant1 ./vagrant_test.sh
   if [ $? -ne 0 ]; then
