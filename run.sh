@@ -31,7 +31,7 @@ gpgcheck=0
 
 EOM
 
-yum -y install vagrant1 rsync
+yum -y -d 0 install vagrant1 rsync
 
 if [ $? -eq 0 ]; then
   service libvirtd start
