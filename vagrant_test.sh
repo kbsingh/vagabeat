@@ -9,7 +9,7 @@ if [ $UpdtPkgs -gt 0 ]; then
     echo 'Box needs an update'
     vagrant ssh -c "sudo yum -y update"
 fi
-vagrant ssh -c 'cd sync; sudo env "PATH=$PATH" bash test_example_helloapache.sh'
+vagrant ssh -c 'cd sync; sudo env "PATH=$PATH" bash test_example_helloapache.sh' -- -t
 if [ $? -ne 0 ]; then
   echo 'failed'
   exit 2
