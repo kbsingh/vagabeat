@@ -31,8 +31,8 @@ enabled=1
 gpgcheck=0
 
 [virtualbox]
-name=Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox
-baseurl=http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch
+name=Oracle Linux / RHEL / CentOS-7 / x86_64 - VirtualBox
+baseurl=http://download.virtualbox.org/virtualbox/rpm/el/7/x86_64
 enabled=1
 gpgcheck=1
 gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
