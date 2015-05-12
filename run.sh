@@ -30,10 +30,18 @@ baseurl=http://copr-be.cloud.fedoraproject.org/results/rhscl/ror40-el7/epel-7-x8
 enabled=1
 gpgcheck=0
 
+[virtualbox]
+name=Oracle Linux / RHEL / CentOS-$releasever / $basearch - VirtualBox
+baseurl=http://download.virtualbox.org/virtualbox/rpm/el/$releasever/$basearch
+enabled=1
+gpgcheck=1
+gpgkey=https://www.virtualbox.org/download/oracle_vbox.asc
+
 EOM
 
-echo 'Installing Vagrant + Libvirt'
-yum -y -d 0 install vagrant1 rsync
+echo 'Installing Vagrant + VirtualBox'
+yum -y -d 1  install epel-release && yum -d 1 -y install dkms
+yum -y -d 1 install vagrant1 rsync VirtualBox-4.3
 if [ $? -eq 0 ]; then
   service libvirtd start
   rm -rf ~/sync ; mkdir -p ~/sync
